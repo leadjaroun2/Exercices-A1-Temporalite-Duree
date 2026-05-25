@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A1 Durée & Temporalité</title>
+    <title>Quiz A1 : Durée & Temporalité</title>
     <style>
         :root {
             --bg-color: #f8f9fa;
@@ -11,6 +11,7 @@
             --text-color: #212529;
             --primary-color: #4a6fa5;
             --accent-color: #e63946;
+            --success-color: #2a9d8f;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             --border-radius: 8px;
         }
@@ -63,100 +64,90 @@
             padding-bottom: 10px;
         }
 
-        .structure {
-            background-color: #edf2f7;
-            padding: 12px 20px;
+        .quiz-item {
+            background: #fdfdfd;
+            padding: 15px;
+            border: 1px solid #edf2f7;
             border-radius: 6px;
-            font-family: "Courier New", Courier, monospace;
-            font-weight: bold;
-            color: #2d3748;
-            margin: 15px 0;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
             margin-bottom: 15px;
         }
 
-        strong {
-            color: var(--accent-color);
+        .quiz-item p {
+            margin-top: 0;
+            font-weight: 500;
         }
 
-        /* Style pour les éléments cliquables de traduction */
-        .clickable-translation {
-            cursor: pointer;
-            display: inline-block;
-            border-bottom: 1px dashed var(--primary-color);
-            transition: color 0.2s;
-        }
-        
-        .clickable-translation:hover {
-            color: var(--primary-color);
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
         }
 
-        .translation-hint {
-            display: block;
-            font-size: 0.85rem;
-            color: #a0aec0;
-            font-style: italic;
-            margin-top: 2px;
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
         }
 
-        .tip {
-            background-color: #e8f4fd;
-            border-left: 4px solid var(--primary-color);
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-            font-size: 0.95rem;
+        input[type="text"]:focus {
+            border-color: var(--primary-color);
         }
 
-        .warning {
-            background-color: #fff5f5;
-            border-left: 4px solid var(--accent-color);
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-            font-size: 0.95rem;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #edf2f7;
-        }
-
-        th {
+        button {
+            padding: 10px 20px;
             background-color: var(--primary-color);
             color: white;
-            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
-        tr:last-child td {
-            border-bottom: none;
+        button:hover {
+            opacity: 0.9;
         }
 
-        @media (max-width: 600px) {
-            body { padding: 20px 10px; }
-            section { padding: 20px; }
-            table, thead, tbody, th, td, tr { display: block; }
-            thead tr { position: absolute; top: -9999px; left: -9999px; }
-            tr { border: 1px solid #edf2f7; margin-bottom: 10px; border-radius: var(--border-radius); padding: 10px; background: #fff; }
-            td { border: none; padding: 8px 0; position: relative; padding-left: 50px; }
-            td:before { content: attr(data-label); position: absolute; left: 0; font-weight: bold; color: var(--primary-color); }
+        /* Classes de validation de résultats */
+        .correct-box {
+            border: 2px solid var(--success-color) !important;
+            background-color: #e8f5e9 !important;
+        }
+
+        .incorrect-box {
+            border: 2px solid var(--accent-color) !important;
+            background-color: #ffebee !important;
+        }
+
+        .feedback-text {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .text-success { color: var(--success-color); }
+        .text-danger { color: var(--accent-color); }
+
+        /* Section Score Final */
+        #result-section {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 15px 0;
+        }
+
+        .comment-display {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #4a5568;
         }
     </style>
 </head>
@@ -165,156 +156,227 @@
 <div class="container">
 
     <header>
-        <h1>⏱️ A1 Temporalité : La Durée & Le Temps</h1>
-        <p class="subtitle">Apprendre à exprimer le moment, l'heure et la durée dans sa routine quotidienne.</p>
+        <h1>⏱️ Quiz Interactif : La Durée & Le Temps (A1)</h1>
+        <p class="subtitle">Traduisez les 20 phrases suivantes en français pour tester vos connaissances !</p>
     </header>
 
     <section>
-        <h2>🚀 1. L'action immédiate (Right now)</h2>
-        <p>Pour exprimer qu'une action se déroule en ce moment même ou immédiatement, on utilise deux adverbes que l'on place généralement à la fin de la phrase.</p>
+        <h2>🚀 Partie 1 : L'action immédiate (5 questions)</h2>
         
-        <div class="structure">Sujet + Verbe + Complément + Adverbe</div>
-        
-        <ul>
-            <li>
-                <strong>Maintenant</strong> (Now - temporellement neutre) :<br>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'I am watching a movie now.')">Je regarde un film <strong>maintenant</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-            <li>
-                <strong>Tout de suite</strong> (Right away - idée d'immédiateté ou d'urgence) :<br>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'I am finishing this work right away.')">Je termine ce travail <strong>tout de suite</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-        </ul>
+        <div class="quiz-item" id="q1">
+            <p>1. Tradis : "I am drinking a tea now."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse en français...">
+                <button onclick="checkAnswer('q1', ['je bois un the maintenant.', 'je bois un the maintenant'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
 
-        <div class="tip">
-            💡 <strong>Astuce de style :</strong> Pour accentuer l'importance du moment présent, vous pouvez placer l'adverbe en tout début de phrase, suivi d'une virgule.<br>
-            <span class="clickable-translation" onclick="toggleTranslation(this, 'Now, I am eating my dinner.')"><strong>Maintenant</strong>, je mange mon dîner.</span>
-            <span class="translation-hint">(Cliquez pour traduire)</span>
+        <div class="quiz-item" id="q2">
+            <p>2. Traduis : "I am leaving the office right away."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse en français...">
+                <button onclick="checkAnswer('q2', ['je quitte le bureau tout de suite.', 'je quitte le bureau tout de suite'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q3">
+            <p>3. Traduis : "We are answering the email now."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse en français...">
+                <button onclick="checkAnswer('q3', ['nous repondons au courriel maintenant.', 'nous repondons au courriel maintenant'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q4">
+            <p>4. Traduis : "He is calling his manager right away."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse en français...">
+                <button onclick="checkAnswer('q4', ['il telephone a son responsable tout de suite.', 'il telephone a son responsable tout de suite'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q5">
+            <p>5. Traduis : "Now, I am preparing the meeting."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse en français...">
+                <button onclick="checkAnswer('q5', ['maintenant, je prepare la reunion.', 'maintenant je prepare la reunion'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
         </div>
     </section>
 
     <section>
-        <h2>⏰ 2. Préciser une heure fixe (At a specific time)</h2>
-        <p>Pour indiquer le moment précis où se déroule une habitude ou un événement de votre routine, utilisez la préposition <strong>à</strong>.</p>
+        <h2>⏰ Partie 2 : Préciser une heure fixe (5 questions)</h2>
         
-        <div class="structure">Sujet + Verbe + Complément + À + Heure</div>
-        
-        <ul>
-            <li>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'I wake up at seven o\'clock.')">Je me réveille <strong>à sept heures</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-            <li>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'I eat a croissant at half past seven.')">Je mange un croissant <strong>à sept heures et demie</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-            <li>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'I leave the house at eight o\'clock.')">Je quitte la maison <strong>à huit heures</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-        </ul>
+        <div class="quiz-item" id="q6">
+            <p>6. Traduis : "I take my shower at six o'clock."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q6', ['je prends ma douche a six heures.', 'je prends ma douche a six heures'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
 
-        <div class="warning">
-            ⚠️ <strong>Attention :</strong> N'oubliez jamais l'accent grave sur la préposition <strong>à</strong> pour ne pas la confondre avec le verbe avoir !
+        <div class="quiz-item" id="q7">
+            <p>7. Traduis : "She checks her messages at nine o'clock."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q7', ['elle verifie ses messages a neuf heures.', 'elle verifie ses messages a neuf heures'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q8">
+            <p>8. Traduis : "We have lunch at one o'clock."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q8', ['nous dejeunons a treize heures.', 'nous dejeunons a treize heures'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q9">
+            <p>9. Traduis : "You finish your day at five o'clock."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q9', ['vous finissez votre journee a dix-sept heures.', 'vous finissez votre journee a dix-sept heures'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q10">
+            <p>10. Traduis : "The supermarket closes at half past eight (20:30)."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q10', ['le supermarche ferme a vingt heures et demie.', 'le supermarche ferme a vingt heures et demie'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
         </div>
     </section>
 
     <section>
-        <h2>⏳ 3. Donner une plage horaire (From... to...)</h2>
-        <p>Si vous souhaitez exprimer le début et la fin d'une activité de votre journée, utilisez la structure <strong>De... à...</strong>.</p>
+        <h2>⏳ Partie 3 : Donner une plage horaire (5 questions)</h2>
         
-        <div class="structure">Sujet + Verbe + Complément + De + Heure 1 + À + Heure 2</div>
-        
-        <ul>
-            <li>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'I study French from 2 PM to 4 PM.')">J'étudie le français <strong>de 14 heures à 16 heures</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-            <li>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'The gym class is from 6 PM to 7 PM.')">Le cours de gym est <strong>de 18 heures à 19 heures</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-        </ul>
+        <div class="quiz-item" id="q11">
+            <p>11. Traduis : "I attend the conference from 10 AM to 11:30 AM."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q11', ['j\'assiste a la conference de 10 heures a 11 heures et demie.', 'j\'assiste a la conference de 10 heures a 11 heures et demie'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
 
-        <div class="tip">
-            💡 <strong>Note :</strong> Cette structure très simple ne change jamais et peut également s'utiliser pour indiquer un trajet entre deux lieux <em>(ex: de Paris à Lyon)</em>.
+        <div class="quiz-item" id="q12">
+            <p>12. Traduis : "The children play soccer from 4 PM to 6 PM."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q12', ['les enfants jouent au football de 16 heures a 18 heures.', 'les enfants jouent au football de 16 heures a 18 heures'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q13">
+            <p>13. Traduis : "The museum is open from Tuesday to Sunday."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q13', ['le musee est ouvert du mardi au dimanche.', 'le musee est ouvert du mardi au dimanche'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q14">
+            <p>14. Traduis : "My break is from noon to 1 PM."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q14', ['ma pause est de midi a treize heures.', 'ma pause est de midi a treize heures'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q15">
+            <p>15. Traduis : "They drive from Lyon to Marseille."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q15', ['ils roulent de lyon a marseille.', 'ils roulent de lyon a marseille'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
         </div>
     </section>
 
     <section>
-        <h2>🗓️ 4. Exprimer la durée (During / For)</h2>
-        <p>En français, que l'on utilise "for" (suivi d'un nombre) ou "during" (suivi d'un événement) en anglais, on utilise un seul mot : <strong>Pendant</strong>.</p>
+        <h2>🗓️ Partie 4 : Exprimer la durée avec Pendant (5 questions)</h2>
         
-        <div class="structure">Option A : ... + Pendant + Durée/Événement<br>Option B : Pendant + Durée/Événement, + ...</div>
-        
-        <ul>
-            <li>
-                <strong>Pendant + Durée chiffrée :</strong><br>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'I study French for two hours.')">J'étudie le français <strong>pendant deux heures</strong>.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-            <li>
-                <strong>Pendant + Événement ou Période :</strong><br>
-                <span class="clickable-translation" onclick="toggleTranslation(this, 'During the evening, I read a book.')"><strong>Pendant la soirée</strong>, je lis un livre.</span>
-                <span class="translation-hint">(Cliquez pour traduire)</span>
-            </li>
-        </ul>
+        <div class="quiz-item" id="q16">
+            <p>16. Traduis : "I cook for forty-five minutes."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q16', ['je cuisine pendant quarante-cinq minutes.', 'je cuisine pendant quarante-cinq minutes'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q17">
+            <p>17. Traduis : "She sleeps for eight hours every night."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q17', ['elle dort pendant huit heures chaque nuit.', 'elle dort pendant huit heures chaque nuit'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q18">
+            <p>18. Traduis : "During the morning, the store is very quiet."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q18', ['pendant la matinee, le magasin est tres calme.', 'pendant la matinee le magasin est tres calme'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q19">
+            <p>19. Traduis : "We talk during the lunch break."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q19', ['nous discutons pendant la pause dejeuner.', 'nous discutons pendant la pause dejeuner'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="quiz-item" id="q20">
+            <p>20. Traduis : "They listen to the radio for five minutes."</p>
+            <div class="input-group">
+                <input type="text" placeholder="Ta réponse...">
+                <button onclick="checkAnswer('q20', ['ils ecoutent la radio pendant cinq minutes.', 'ils ecoutent la radio pendant cinq minutes'])">Vérifier</button>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
     </section>
 
-    <section>
-        <h2>📝 En résumé</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Notion</th>
-                    <th>Structure / Mots-clés</th>
-                    <th>Exemple (Clique pour traduire)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Notion"><strong>Immédiat</strong></td>
-                    <td data-label="Structure">Maintenant / Tout de suite</td>
-                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'I am leaving right away.')">Je pars <strong>tout de suite</strong>.</span></td>
-                </tr>
-                <tr>
-                    <td data-label="Notion"><strong>Heure précise</strong></td>
-                    <td data-label="Structure">À + heure</td>
-                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'The movie starts at 9 PM.')">Le film commence <strong>à 21 heures</strong>.</span></td>
-                </tr>
-                <tr>
-                    <td data-label="Notion"><strong>Plage horaire</strong></td>
-                    <td data-label="Structure">De [Heure] à [Heure]</td>
-                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'I sleep from 11 PM to 7 AM.')">Je dors <strong>de 23 heures à 7 heures</strong>.</span></td>
-                </tr>
-                <tr>
-                    <td data-label="Notion"><strong>Durée globale</strong></td>
-                    <td data-label="Structure">Pendant + durée/événement</td>
-                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'I walk for an hour.')">Je marche <strong>pendant une heure</strong>.</span></td>
-                </tr>
-            </tbody>
-        </table>
+    <div style="text-align: center; margin-bottom: 40px;">
+        <button onclick="calculateFinalScore()" style="font-size: 1.2rem; padding: 15px 40px; background-color: var(--success-color);">Terminer et voir mon score global</button>
+    </div>
+
+    <section id="result-section">
+        <h2>📊 Résultat Final</h2>
+        <div class="score-display" id="final-score">0 / 20</div>
+        <div class="comment-display" id="final-comment">Complétez le quiz pour obtenir votre évaluation.</div>
     </section>
 
 </div>
 
 <script>
-    function toggleTranslation(element, translationText) {
-        // Si l'élément a déjà été traduit, on remet le texte d'origine stocké dans un attribut personnalisé
-        if (element.getAttribute('data-original')) {
-            element.innerHTML = element.getAttribute('data-original');
-            element.removeAttribute('data-original');
-            element.style.color = '';
-        } else {
-            // Sinon, on sauvegarde le texte français et on affiche l'anglais en bleu/gris
-            element.setAttribute('data-original', element.innerHTML);
-            element.innerHTML = '<em>' + translationText + '</em>';
-            element.style.color = '#4a6fa5';
-        }
-    }
-</script>
+    // Liste pour suivre les bonnes réponses uniques (sans triche)
+    let scoreTracker = {};
 
-</body>
-</html>
+    // Fonction pour nettoyer les chaînes de texte (enlever accents basiques pour la souplesse du niveau A1)
+    function cleanText(str) {
+        return str.toLowerCase()
+                  .trim()
+                  .replace(/[éèêë]/g,"e")
+                  .replace(/[àâä]/g,"a")
+                  .replace(/[ùûü]/g,"u")
+                  .replace(/[îï]/g,"i")
