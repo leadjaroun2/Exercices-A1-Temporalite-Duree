@@ -203,15 +203,108 @@
 
 <script>
     const questions = [
-        // 1. Action immédiate (Maintenant / Tout de suite)
+        // 1. Action immédiate
         { q: "Je bois un thé de l'après-midi ________.", t: "I am drinking an afternoon tea now.", o: ["à midi", "pendant", "maintenant", "de"], a: 2 },
         { q: "Je quitte le bureau ________ pour prendre mon train.", t: "I am leaving the office right away to catch my train.", o: ["tout de suite", "pendant", "à", "de"], a: 0 },
         { q: "Nous répondons au courriel important ________.", t: "We are answering the important email now.", o: ["pendant", "maintenant", "à deux heures", "de"], a: 1 },
         { q: "Il téléphone à son responsable ________.", t: "He is calling his manager right away.", o: ["pendant", "à", "de", "tout de suite"], a: 3 },
         { q: "________, je prépare activement la réunion.", t: "Now, I am actively preparing the meeting.", o: ["Pendant", "À", "Maintenant", "De"], a: 2 },
         
-        // 2. Préciser une heure fixe (À)
+        // 2. Préciser une heure fixe
         { q: "Je prends ma douche ________ six heures du matin.", t: "I take my shower at six o'clock in the morning.", o: ["pendant", "de", "à", "maintenant"], a: 2 },
         { q: "Elle vérifie ses messages ________ neuf heures.", t: "She checks her messages at nine o'clock.", o: ["à", "pendant", "de", "tout de suite"], a: 0 },
         { q: "Nous déjeunons ensemble ________ treize heures.", t: "We have lunch together at one o'clock (13:00).", o: ["de", "pendant", "maintenant", "à"], a: 3 },
-        { q: "Vous finissez votre journée ________ dix-sept heures.", t: "You finish your day at five o'clock (17:00).", o:
+        { q: "Vous finissez votre journée ________ dix-sept heures.", t: "You finish your day at five o'clock (17:00).", o: ["à", "pendant", "de", "tout de suite"], a: 0 },
+        { q: "Le supermarché ferme ________ vingt heures et demie.", t: "The supermarket closes at half past eight (20:30).", o: ["pendant", "à", "de", "maintenant"], a: 1 },
+        
+        // 3. Plage horaire
+        { q: "J'assiste à la conférence ________ 10 heures à 11 heures et demie.", t: "I attend the conference from 10 AM to 11:30 AM.", o: ["pendant", "à", "de", "maintenant"], a: 2 },
+        { q: "Les enfants jouent au football de 16 heures ________ 18 heures.", t: "The children play soccer from 4 PM to 6 PM.", o: ["à", "pendant", "de", "tout de suite"], a: 0 },
+        { q: "La bibliothèque est ouverte ________ mardi au samedi.", t: "The library is open from Tuesday to Saturday.", o: ["pendant", "à", "du", "maintenant"], a: 2 },
+        { q: "Ma pause déjeuner est de midi ________ treize heures.", t: "My lunch break is from noon to 1 PM.", o: ["pendant", "à", "de", "tout de suite"], a: 1 },
+        { q: "Ils roulent ________ Paris à Marseille.", t: "They drive from Paris to Marseille.", o: ["de", "à", "pendant", "maintenant"], a: 0 },
+        
+        // 4. Exprimer la durée
+        { q: "Je cuisine un bon repas ________ quarante-cinq minutes.", t: "I cook a good meal for forty-five minutes.", o: ["à", "de", "maintenant", "pendant"], a: 3 },
+{ q: "Elle dort profondément ________ huit heures chaque nuit.", t: "She sleeps soundly for eight hours every night.", o: ["pendant", "à", "de", "tout de suite"], a: 0 },
+        { q: "________ la matinée, le magasin de fleurs est très calme.", t: "During the morning, the flower shop is very quiet.", o: ["À", "Pendant", "De", "Maintenant"], a: 1 },
+        { q: "Nous discutons de notre projet ________ la pause café.", t: "We discuss our project during the coffee break.", o: ["à", "de", "pendant", "tout de suite"], a: 2 },
+        { q: "Ils écoutent les informations à la radio ________ cinq minutes.", t: "They listen to the news on the radio for five minutes.", o: ["à", "pendant", "de", "maintenant"], a: 1 }
+    ];
+
+    let currentIdx = 0;
+    let score = 0;
+    let isTrans = false;
+
+    function loadQ() {
+        isTrans = false;
+        const q = questions[currentIdx];
+        document.getElementById('q-text').innerText = q.q;
+        document.getElementById('t-link').innerText = "👁️ Traduire en anglais / Translate to English";
+        
+        document.getElementById('q-count').innerText = "Question " + (currentIdx + 1) + "/20";
+        document.getElementById('p-bar').style.width = ((currentIdx + 1) / 20 * 100) + "%";
+        
+        const optCont = document.getElementById('options');
+        optCont.innerHTML = '';
+        q.o.forEach((opt, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => check(i, btn);
+            optCont.appendChild(btn);
+        });
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function toggleTranslation() {
+        isTrans = !isTrans;
+        document.getElementById('t-link').innerText = isTrans ? questions[currentIdx].t : "👁️ Traduire en anglais / Translate to English";
+    }
+
+    function check(i, btn) {
+        const correct = questions[currentIdx].a;
+        const all = document.querySelectorAll('.option-btn');
+        all.forEach(b => b.disabled = true);
+
+        const f = document.getElementById('feedback');
+        f.style.display = 'block';
+        
+        if(i === correct) {
+            btn.classList.add('correct');
+            f.innerText = "Excellent ! Correct. ✅";
+            f.style.color = "var(--success)";
+            score++;
+            document.getElementById('score-count').innerText = "Score: " + score;
+        } else {
+            btn.classList.add('incorrect');
+            all[correct].classList.add('correct');
+            f.innerText = "Dommage ! La réponse était : " + questions[currentIdx].o[correct] + " ❌";
+            f.style.color = "var(--error)";
+        }
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentIdx++;
+        if(currentIdx < 20) loadQ();
+        else showRes();
+    }
+
+    function showRes() {
+        document.getElementById('quiz-ui').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+        document.getElementById('final-score').innerText = score + " / 20";
+        const comm = document.getElementById('res-comment');
+        
+        if(score === 20) comm.innerHTML = "Parfait ! Vous êtes un expert de la gestion du temps et de la durée.<br><i>Perfect! You are an expert in managing time and duration.</i>";
+        else if(score >= 14) comm.innerHTML = "Très bien ! Vous maîtrisez bien l'heure, les plages horaires et la durée.<br><i>Great! You understand time, time slots, and duration well.</i>";
+        else comm.innerHTML = "Continuez d'apprendre les expressions de temps (pendant, maintenant, de... à...) !<br><i>Keep learning time expressions!</i>";
+    }
+
+    loadQ();
+</script>
+
+</body>
+</html>
