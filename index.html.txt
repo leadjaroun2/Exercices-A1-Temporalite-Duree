@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 Durée & Temporalité</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --primary-color: #4a6fa5;
+            --accent-color: #e63946;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #eaedf1;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 0;
+            border-bottom: 1px solid #f1f3f5;
+            padding-bottom: 10px;
+        }
+
+        .structure {
+            background-color: #edf2f7;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-family: "Courier New", Courier, monospace;
+            font-weight: bold;
+            color: #2d3748;
+            margin: 15px 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: var(--accent-color);
+        }
+
+        /* Style pour les éléments cliquables de traduction */
+        .clickable-translation {
+            cursor: pointer;
+            display: inline-block;
+            border-bottom: 1px dashed var(--primary-color);
+            transition: color 0.2s;
+        }
+        
+        .clickable-translation:hover {
+            color: var(--primary-color);
+        }
+
+        .translation-hint {
+            display: block;
+            font-size: 0.85rem;
+            color: #a0aec0;
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        .tip {
+            background-color: #e8f4fd;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .warning {
+            background-color: #fff5f5;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 20px 10px; }
+            section { padding: 20px; }
+            table, thead, tbody, th, td, tr { display: block; }
+            thead tr { position: absolute; top: -9999px; left: -9999px; }
+            tr { border: 1px solid #edf2f7; margin-bottom: 10px; border-radius: var(--border-radius); padding: 10px; background: #fff; }
+            td { border: none; padding: 8px 0; position: relative; padding-left: 50px; }
+            td:before { content: attr(data-label); position: absolute; left: 0; font-weight: bold; color: var(--primary-color); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>⏱️ A1 Temporalité : La Durée & Le Temps</h1>
+        <p class="subtitle">Apprendre à exprimer le moment, l'heure et la durée dans sa routine quotidienne.</p>
+    </header>
+
+    <section>
+        <h2>🚀 1. L'action immédiate (Right now)</h2>
+        <p>Pour exprimer qu'une action se déroule en ce moment même ou immédiatement, on utilise deux adverbes que l'on place généralement à la fin de la phrase.</p>
+        
+        <div class="structure">Sujet + Verbe + Complément + Adverbe</div>
+        
+        <ul>
+            <li>
+                <strong>Maintenant</strong> (Now - temporellement neutre) :<br>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'I am watching a movie now.')">Je regarde un film <strong>maintenant</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+            <li>
+                <strong>Tout de suite</strong> (Right away - idée d'immédiateté ou d'urgence) :<br>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'I am finishing this work right away.')">Je termine ce travail <strong>tout de suite</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+        </ul>
+
+        <div class="tip">
+            💡 <strong>Astuce de style :</strong> Pour accentuer l'importance du moment présent, vous pouvez placer l'adverbe en tout début de phrase, suivi d'une virgule.<br>
+            <span class="clickable-translation" onclick="toggleTranslation(this, 'Now, I am eating my dinner.')"><strong>Maintenant</strong>, je mange mon dîner.</span>
+            <span class="translation-hint">(Cliquez pour traduire)</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>⏰ 2. Préciser une heure fixe (At a specific time)</h2>
+        <p>Pour indiquer le moment précis où se déroule une habitude ou un événement de votre routine, utilisez la préposition <strong>à</strong>.</p>
+        
+        <div class="structure">Sujet + Verbe + Complément + À + Heure</div>
+        
+        <ul>
+            <li>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'I wake up at seven o\'clock.')">Je me réveille <strong>à sept heures</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+            <li>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'I eat a croissant at half past seven.')">Je mange un croissant <strong>à sept heures et demie</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+            <li>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'I leave the house at eight o\'clock.')">Je quitte la maison <strong>à huit heures</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+        </ul>
+
+        <div class="warning">
+            ⚠️ <strong>Attention :</strong> N'oubliez jamais l'accent grave sur la préposition <strong>à</strong> pour ne pas la confondre avec le verbe avoir !
+        </div>
+    </section>
+
+    <section>
+        <h2>⏳ 3. Donner une plage horaire (From... to...)</h2>
+        <p>Si vous souhaitez exprimer le début et la fin d'une activité de votre journée, utilisez la structure <strong>De... à...</strong>.</p>
+        
+        <div class="structure">Sujet + Verbe + Complément + De + Heure 1 + À + Heure 2</div>
+        
+        <ul>
+            <li>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'I study French from 2 PM to 4 PM.')">J'étudie le français <strong>de 14 heures à 16 heures</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+            <li>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'The gym class is from 6 PM to 7 PM.')">Le cours de gym est <strong>de 18 heures à 19 heures</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+        </ul>
+
+        <div class="tip">
+            💡 <strong>Note :</strong> Cette structure très simple ne change jamais et peut également s'utiliser pour indiquer un trajet entre deux lieux <em>(ex: de Paris à Lyon)</em>.
+        </div>
+    </section>
+
+    <section>
+        <h2>🗓️ 4. Exprimer la durée (During / For)</h2>
+        <p>En français, que l'on utilise "for" (suivi d'un nombre) ou "during" (suivi d'un événement) en anglais, on utilise un seul mot : <strong>Pendant</strong>.</p>
+        
+        <div class="structure">Option A : ... + Pendant + Durée/Événement<br>Option B : Pendant + Durée/Événement, + ...</div>
+        
+        <ul>
+            <li>
+                <strong>Pendant + Durée chiffrée :</strong><br>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'I study French for two hours.')">J'étudie le français <strong>pendant deux heures</strong>.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+            <li>
+                <strong>Pendant + Événement ou Période :</strong><br>
+                <span class="clickable-translation" onclick="toggleTranslation(this, 'During the evening, I read a book.')"><strong>Pendant la soirée</strong>, je lis un livre.</span>
+                <span class="translation-hint">(Cliquez pour traduire)</span>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>📝 En résumé</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Notion</th>
+                    <th>Structure / Mots-clés</th>
+                    <th>Exemple (Clique pour traduire)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Notion"><strong>Immédiat</strong></td>
+                    <td data-label="Structure">Maintenant / Tout de suite</td>
+                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'I am leaving right away.')">Je pars <strong>tout de suite</strong>.</span></td>
+                </tr>
+                <tr>
+                    <td data-label="Notion"><strong>Heure précise</strong></td>
+                    <td data-label="Structure">À + heure</td>
+                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'The movie starts at 9 PM.')">Le film commence <strong>à 21 heures</strong>.</span></td>
+                </tr>
+                <tr>
+                    <td data-label="Notion"><strong>Plage horaire</strong></td>
+                    <td data-label="Structure">De [Heure] à [Heure]</td>
+                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'I sleep from 11 PM to 7 AM.')">Je dors <strong>de 23 heures à 7 heures</strong>.</span></td>
+                </tr>
+                <tr>
+                    <td data-label="Notion"><strong>Durée globale</strong></td>
+                    <td data-label="Structure">Pendant + durée/événement</td>
+                    <td><span class="clickable-translation" onclick="toggleTranslation(this, 'I walk for an hour.')">Je marche <strong>pendant une heure</strong>.</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+
+<script>
+    function toggleTranslation(element, translationText) {
+        // Si l'élément a déjà été traduit, on remet le texte d'origine stocké dans un attribut personnalisé
+        if (element.getAttribute('data-original')) {
+            element.innerHTML = element.getAttribute('data-original');
+            element.removeAttribute('data-original');
+            element.style.color = '';
+        } else {
+            // Sinon, on sauvegarde le texte français et on affiche l'anglais en bleu/gris
+            element.setAttribute('data-original', element.innerHTML);
+            element.innerHTML = '<em>' + translationText + '</em>';
+            element.style.color = '#4a6fa5';
+        }
+    }
+</script>
+
+</body>
+</html>
